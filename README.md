@@ -172,7 +172,7 @@ The CLI is a distribution convenience, not a runtime. An installed Learn Path sk
 
 Cursor and Copilot also officially support the interoperable `.agents/skills` location. Claude Code does not currently document that location. Read [compatibility](docs/compatibility.md) before encoding these paths elsewhere.
 
-### CLI
+### Option 1: Learn Path CLI
 
 ```sh
 # See available skills
@@ -200,6 +200,28 @@ npx learn-path remove deep-dive --agent cursor
 The generic `agents` target and project scope are the defaults, so `learn-path add guided-debugging` installs into `.agents/skills`. Use `--scope global` for the documented user-level path. `add` safely replaces an existing Learn Path-owned copy, but refuses to overwrite another skill with the same name. `remove` applies the same ownership check and never removes the parent skills directory.
 
 Use `--agent auto` only when the project has one clear target marker. If several agents are detected, the CLI requires an explicit target rather than choosing arbitrarily or installing several copies.
+
+### Option 2: skills CLI
+
+The open [`skills` CLI](https://github.com/vercel-labs/skills) can install Learn Path directly from its GitHub repository:
+
+```sh
+# See available skills
+npx skills@latest add boussadjra/learn-path --list
+
+# Choose skills and target agents interactively
+npx skills@latest add boussadjra/learn-path
+
+# Install one skill for Codex
+npx skills@latest add boussadjra/learn-path --skill guided-debugging --agent codex
+
+# Install one skill globally
+npx skills@latest add boussadjra/learn-path --skill deep-dive --global
+```
+
+This option uses the shared agent-skills ecosystem for agent discovery, installation, updates, and removal. Use the Learn Path CLI when you also want its Learn Path-specific ownership checks and `doctor` command.
+
+### Local development
 
 For local development, the equivalent commands are:
 
