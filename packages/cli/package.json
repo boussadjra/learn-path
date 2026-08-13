@@ -1,0 +1,24 @@
+{
+  "name": "learn-path",
+  "version": "0.1.0",
+  "description": "Install Learn Path's portable learning skills for AI coding agents.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "learn-path": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node ../../scripts/clean-cli-dist.mjs && tsc -p tsconfig.json && node ../../scripts/copy-cli-skills.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  }
+}

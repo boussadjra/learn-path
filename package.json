@@ -1,0 +1,40 @@
+{
+  "name": "learn-path-workspace",
+  "version": "0.1.0",
+  "description": "AI skills that guide people through real work while helping them understand what they are doing.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "pnpm --filter learn-path build",
+    "cli": "tsx packages/cli/src/index.ts",
+    "validate": "tsx scripts/validate-skills.ts",
+    "check:links": "tsx scripts/check-links.ts",
+    "check:package": "tsx scripts/check-cli-package.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "pnpm validate && pnpm check:links && pnpm typecheck && pnpm test && pnpm build && pnpm check:package"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boussadjra/learn-path.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/boussadjra/learn-path#readme",
+  "bugs": {
+    "url": "https://github.com/boussadjra/learn-path/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
